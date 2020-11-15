@@ -40,6 +40,7 @@ echo "<td>".$user['addr']."</td>";
 echo "<td>".$user['education']."</td>";
 echo "<td>".$user['role']."</td>";
 echo "<td><a href='edit_user.php?id={$user['login_id']}'><button>編輯</button></a></td>";
+echo "<td><a href='del_user.php?id={$user['login_id']}'><button>刪除</button></a></td>";
 echo "</tr>";
 }
 ?>
