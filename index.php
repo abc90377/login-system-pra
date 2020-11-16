@@ -1,11 +1,12 @@
 <?php
 include_once('header.php');
 ?>
-<!-- <?php
-if(isset($_COOKIE['login'])){
+<?php
+session_start();
+if(isset($_SESSION['login'])){
   $dsn="mysql:host=localhost;dbname=login_pra;charset:utf8";
   $pdo=new PDO ($dsn,'root','');
-  $sql="SELECT `role` FROM `login`,`mem` WHERE `login`.`id`=`mem`.`login_id` && `login`.`acc`='{$_COOKIE['login']}'";
+  $sql="SELECT `role` FROM `login`,`mem` WHERE `login`.`id`=`mem`.`login_id` && `login`.`acc`='{$_SESSION['login']}'";
   $user=$pdo->query($sql)->fetch();
   switch ($user['role']) {
     case '會員':
@@ -23,7 +24,7 @@ if(isset($_COOKIE['login'])){
   } 
   
   
-  ?>-->
+  ?>
 
   <div class="container mt-5">
     <div class="col-6 border bg-light m-auto" style="height:300px;box-shadow:1px 1px 10px #185761">

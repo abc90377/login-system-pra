@@ -19,7 +19,8 @@ $rolecheck="select * from `login`,`mem` where `login`.`acc`='$acc' && `login`.`i
 $user=$pdo->query($rolecheck)->fetch();
 $role=$user['role'];
 $name=$user['name'];
-setcookie('login',$acc,time()+3600);
+session_start();
+$_SESSION['login']=$acc;
 if ($check) {
     switch ($role) {
         case '會員':

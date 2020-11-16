@@ -1,4 +1,6 @@
 <?php
-setcookie('login','',time()-99);
+session_start();
+$_SESSION['login']=null;
+unset($_SESSION['login']);
 header('location:index.php');
 ?>

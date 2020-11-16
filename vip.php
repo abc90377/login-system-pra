@@ -8,10 +8,11 @@
 <body>
 <h1>白金會員中心</h1>
 <?php
-if(isset($_COOKIE['login'])){
+session_start();
+if(isset($_SESSION['login'])){
  $dsn="mysql:host=localhost;dbname=login_pra;charset=utf8";
 $pdo=new PDO ($dsn,'root','');
-$sql="SELECT `name` FROM `login`,`mem` WHERE `login`.`id`=`mem`.`login_id` && `login`.`acc`='{$_COOKIE['login']}'";
+$sql="SELECT `name` FROM `login`,`mem` WHERE `login`.`id`=`mem`.`login_id` && `login`.`acc`='{$_SESSION['login']}'";
 $user=$pdo->query($sql)->fetch();
 }
 ?>
