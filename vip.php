@@ -7,6 +7,16 @@
 </head>
 <body>
 <h1>白金會員中心</h1>
-尊爵的<?=$_GET['name']?>你好，歡迎你
+<?php
+if(isset($_COOKIE['login'])){
+ $dsn="mysql:host=localhost;dbname=login_pra;charset=utf8";
+$pdo=new PDO ($dsn,'root','');
+$sql="SELECT `name` FROM `login`,`mem` WHERE `login`.`id`=`mem`.`login_id` && `login`.`acc`='{$_COOKIE['login']}'";
+$user=$pdo->query($sql)->fetch();
+}
+?>
+
+<p>尊爵的<?=$user['name'];?>你好，歡迎你</p>
+<a href="logout.php">登出</a>
 </body>
 </html>

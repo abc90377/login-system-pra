@@ -7,6 +7,8 @@
  * 5. 檢查會員身份及權限
  * 6. 依據會員身份導向不同的頁面
  */
+
+
 $dsn="mysql:host=localhost;dbname=login_pra;charset=utf8";
 $pdo=new PDO($dsn,'root','');
 $acc=$_POST['acc'];
@@ -17,6 +19,7 @@ $rolecheck="select * from `login`,`mem` where `login`.`acc`='$acc' && `login`.`i
 $user=$pdo->query($rolecheck)->fetch();
 $role=$user['role'];
 $name=$user['name'];
+setcookie('login',$acc,time()+3600);
 if ($check) {
     switch ($role) {
         case '會員':

@@ -7,6 +7,16 @@
 </head>
 <body>
 <h1>一般會員中心</h1> 
-親愛的<?=$_GET['name']?>你好，歡迎你
+<?php
+if(isset($_COOKIE['login'])){
+ $dsn="mysql:host=localhost;dbname=login_pra;charset=utf8";
+$pdo=new PDO ($dsn,'root','');
+$sql="SELECT `name` FROM `login`,`mem` WHERE `login`.`id`=`mem`.`login_id` && `login`.`acc`='{$_COOKIE['login']}'";
+$user=$pdo->query($sql)->fetch();
+}
+?>
+親愛的<?=$user['name'];?>你好，歡迎你
+<a href="logout.php">登出</a>
 </body>
+
 </html>

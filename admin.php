@@ -2,6 +2,17 @@
 $title='管理中心';
 include_once('header.php');
 ?>
+<?php
+if(isset($_COOKIE['login'])){
+ $dsn="mysql:host=localhost;dbname=login_pra;charset=utf8";
+$pdo=new PDO ($dsn,'root','');
+$sql="SELECT `name` FROM `login`,`mem` WHERE `login`.`id`=`mem`.`login_id` && `login`.`acc`='{$_COOKIE['login']}'";
+$user=$pdo->query($sql)->fetch();
+// print_r($user);
+}
+?>
+親愛的<?=$user['name'];?>你好，歡迎你
+<a href="logout.php">登出</a>
 <table class='table table-light '>
 <thead>
 <tr>
@@ -27,7 +38,7 @@ $pdo=new PDO($dsn,'root','');
 
 $sql='select `login_id`,`name`,`acc`,`pw`,`email`,`birthday`,`addr`,`education`,`role` from `login`,`mem` where `login`.`id`=`mem`.`login_id` ';
 $users=$pdo->query($sql)->fetchALL();
-print_r($users);
+// print_r($users);
 foreach($users as $user){
 
 echo "</tr>";

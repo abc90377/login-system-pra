@@ -1,7 +1,29 @@
 <?php
 include_once('header.php');
 ?>
-
+<!-- <?php
+if(isset($_COOKIE['login'])){
+  $dsn="mysql:host=localhost;dbname=login_pra;charset:utf8";
+  $pdo=new PDO ($dsn,'root','');
+  $sql="SELECT `role` FROM `login`,`mem` WHERE `login`.`id`=`mem`.`login_id` && `login`.`acc`='{$_COOKIE['login']}'";
+  $user=$pdo->query($sql)->fetch();
+  switch ($user['role']) {
+    case '會員':
+      header("location:mem.php");
+      break;
+    case 'vip':
+      header("location:vip.php");
+      break;
+    case '管理員':
+      header("location:admin.php");
+      break;
+    
+  
+  }
+  } 
+  
+  
+  ?>-->
 
   <div class="container mt-5">
     <div class="col-6 border bg-light m-auto" style="height:300px;box-shadow:1px 1px 10px #185761">
