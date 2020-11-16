@@ -38,7 +38,7 @@ if(isset($_SESSION['login'])){
         <p class="text-center">帳號：<input type="text" name="acc"></p>
         <p class="text-center">密碼：<input type="password" name="pw"></p>
         <p class="d-flex justify-content-around" style="font-size:0.87rem">
-          <a href="forget_pw.html">忘記密碼?</a>
+          <a href="forget_pw.php">忘記密碼?</a>
           <a href="register.php">註冊新帳號</a>
         </p>
         <p class="text-center"><input type="submit" value="登入"></p>
